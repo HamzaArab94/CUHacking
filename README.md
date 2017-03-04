@@ -10,11 +10,11 @@ Potential Prize Categories:
   2. RL Solutions Prize
   3.  .Tech Domain
   4. Best Domain Name from Domain.com
+  5. Amazon Web Services - Best Use of AWS
   
   Maybe
   1. Indico API
-  2. Amazon Web Services - Best Use of AWS
-  3. Most Launable Project - Hatch
+  2. Most Launable Project - Hatch
   
 Technology Stack
 Front End:
