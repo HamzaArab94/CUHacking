@@ -14,7 +14,7 @@ Potential Prize Categories:
   
   Maybe
   1. Indico API
-  2. Most Launable Project - Hatch
+  2. Most Launchable Project - Hatch
   
 Technology Stack
 Front End:
