@@ -1,9 +1,30 @@
 #import indicoio
+import time
+import os
 import json
 import urllib2
+import flask
 from natsort import natsorted
 from pandas import DataFrame
+#print "Access-Control-Allow-Origin: *"
 ##indicoio.config.api_key = '8a1ce26c054d3985644f63074b015980'
+
+from flask import Flask
+app = Flask(__name__)
+
+@app.route("/data/")
+def callBackend():
+    defective = 'PLEASE CHECK FOR PROBLEMS: '
+    defective = defective + detectDefectiveDevices(allInfo)
+    defective = defective + 'REASON: Packet Loss'
+    #info = fetch_and_extract(rows, allInfo)
+    #completeStr = info[0]
+    
+    #for i in range(len(info)):
+    #    completeStr = completeStr + info[i]
+    resp = flask.jsonify({"text":defective})
+    resp.headers['Access-Control-Allow-Origin'] = '*'
+    return resp
 
 destination = "C:/Users/Shamir Alavi/Desktop/CUHacking2017/Codes/"
 name = 'rawData'
@@ -15,12 +36,26 @@ rows = ["description", "name", "alarms" , "connected", "dhcpClients", "volume", 
             "battery", "voiceQuality", "bagelMode", "isToasting", "oodl", "patch", "qa_passed", "is_streaming", "media_type",
             "paperStock", "motionDetected", "bytesReceived", "bytesSent", "macAddress", "packetLossRate", "packetsLost"] # "alarms_description", "alarms_severity", "alarms_title"
 allInfo = []
+allInfo.append(rows)
 
-#from flask import Flask
-#app = Flask(__name__)
-#
-#@app.route("/")
-
+def detectDefectiveDevices(listOfDevices):
+    packetLost = []
+    packetLossThreshold = 50000
+    for i in range(len(listOfDevices)):
+        packetLost.append(listOfDevices[i][-1])
+    
+    checkDevice = []
+    for i in range(len(packetLost)):
+        if (packetLost[i] > packetLossThreshold):
+            checkDevice.append(listOfDevices[i][0])
+    
+    checkDevStr = ''
+    for i in range(len(checkDevice) - 1):
+        index = i+1
+        checkDevStr = checkDevStr + str(checkDevice[index]) + ' || '
+        
+    return checkDevStr
+    
 def fetchDeviceList(url):    
     req = urllib2.Request(url)
     response = urllib2.urlopen(req)
@@ -47,8 +82,7 @@ def fetch_and_extract(headers, storage):
     # Write CSV Header, If you dont need that, remove this line
     
     
-    information = ["NA"] * len(headers)    
-    storage.append(headers)
+    information = ["NA"] * len(headers)
     
     for device in range(len(rawData)):
         for i in range(len(rawData[device].keys())):
@@ -67,16 +101,20 @@ def fetch_and_extract(headers, storage):
                     pass
     
         storage.append(information)
+        #callableInfo = information
         information = ["NA"] * len(rows)
+        
+    #return callableInfo
+    
+fetch_and_extract(rows, allInfo)
 
-for i in range(10):
-    fetch_and_extract(rows, allInfo)
+if __name__ == "__main__":
+    app.run(debug = True)
 
-#if __name__ == "__main__":
-#    app.run()
-
+#for i in range(250):
+#    fetch_and_extract(rows, allInfo)
+#    time.sleep(60)
 
     
-pandasData = DataFrame(allInfo)
-pandasData.to_csv(destination + name + fileformat, header = False, index = False)
-    
+#pandasData = DataFrame(allInfo)
+#pandasData.to_csv(destination + name + fileformat, header = False, index = False)
