@@ -14,9 +14,9 @@ app = Flask(__name__)
 
 @app.route("/data/")
 def callBackend():
-    defective = 'PLEASE CHECK FOR PROBLEMS: '
-    defective = defective + detectDefectiveDevices(allInfo)
-    defective = defective + 'REASON: Packet Loss'
+    #defective = 'PLEASE CHECK FOR PROBLEMS: '
+    defective = detectDefectiveDevices(allInfo)
+    defective = defective + 'REASON for delay: Packet Loss'
     #info = fetch_and_extract(rows, allInfo)
     #completeStr = info[0]
     
@@ -48,13 +48,28 @@ def detectDefectiveDevices(listOfDevices):
     for i in range(len(packetLost)):
         if (packetLost[i] > packetLossThreshold):
             checkDevice.append(listOfDevices[i][0])
+            
+    alarms = []
+    for i in range(len(listOfDevices)):
+        try:
+            if (type(listOfDevices[i][2][0]) == dict):
+                print listOfDevices[i][0]
+                alarms.append(listOfDevices[i][0])
+        except IndexError:
+            pass
     
-    checkDevStr = ''
+    criticalDevices = 'CRITICAL Problems: '
+    for i in range(len(alarms) - 1):
+        criticalDevices = criticalDevices + str(checkDevice[i+1]) + ' || '
+    criticalDevices = criticalDevices + "||||"
+    
+    checkDevStr = ' Slow Internet Connection: '
     for i in range(len(checkDevice) - 1):
         index = i+1
         checkDevStr = checkDevStr + str(checkDevice[index]) + ' || '
-        
-    return checkDevStr
+    
+    problems = criticalDevices + checkDevStr    
+    return problems
     
 def fetchDeviceList(url):    
     req = urllib2.Request(url)
