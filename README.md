@@ -23,3 +23,4 @@ The team is proud of the completion of an Web Application.
 The team gained development experience Bootstrapping for Web Development and Python Development. 
 
 # What's next for Digital FootPrint
+More projects, better outcomes
