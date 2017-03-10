@@ -14,7 +14,7 @@ Digital FootPrint is built using a Web application as the primary source of UI t
 Some challenges the team ran into included fetching and cleaning the dataset from Martello's API an integration of both Front End and Back End of the project. 
 
 # Accomplishments that we're proud of
-Built a sleak user interface for the web application. 
+Built a sleek user interface for the web application. 
 Team Members understood fundamental networking concepts and the Simple Network Management Protocol used to create the dataset for Martello's API. 
 Complete the logic of the implementation.
 Every member was able to learned new technologies. 
