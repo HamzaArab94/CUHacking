@@ -4,120 +4,68 @@
 	<meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>CoolSh*t</title>
+    <title>Digital FootPrint</title>
       <link rel="icon" href="icon.png">
-
+    <link href="css/bootstrap.css" rel="stylesheet">
    	<link href="MY.css" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    
-  	<link href="css/bootstrap.css" rel="stylesheet">
 </head>
 <body>
-<div class="container" style="background: white;">
-	<nav class="nav navbar-inverse navbar-fixed-top" role="navigation">
-		<div class="container-fluid">
-			
-		<a class="navbar-brand" href="index.html"> <img src="icon.png" height="30"></a>			
-		<div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-            	<li><a href="index.html"><span class="glyphicon glyphicon-home" ></span>Home</a></li>
-				<li><a href="aboutus.html"><span class="glyphicon glyphicon-info-sign"></span>About</a></li> <li class="active"><a href="TheStuff.html"><span class="glyphicon glyphicon-signal"></span>The Stuff</a></li>             </ul>            	</ul>
-		</div>
-	</nav>
-	<div class="container-fluid">
-  	<div class="jumbotron">
-    <h1 align="center">Hey Bitches</h1>      
-    <p align="center">In the 21st century, <strong>Data has the power.</strong></p>
-  	</div>   
-
-</div>
-
-  <div id="myCarousel" class="carousel slide" data-ride="carousel">
-    <!-- Indicators -->
-    <ol class="carousel-indicators">
-      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-      <li data-target="#myCarousel" data-slide-to="1"></li>
-      <li data-target="#myCarousel" data-slide-to="2"></li>
-      <li data-target="#myCarousel" data-slide-to="3"></li>
-    </ol>
-<div class="carousel-inner" role="listbox">
-
-      <div class="item active">
-        <img src="img_chania.jpg" alt="Chania" width="460" height="345">
-        <div class="carousel-caption">
-          <h3>Analyse our Data</h3>
-        </div>
-      </div>
-
-      <div class="item">
-        <img src="img_chania2.jpg" alt="Chania" width="460" height="325">
-        <div class="carousel-caption">
-          <h3>Prepared by the experts</h3>
-        </div>
-      </div>
-    
-      <div class="item">
-        <img src="img_flower.jpg" alt="Flower" width="460" height="345">
-        <div class="carousel-caption">
-          <h3>And by the ones who care</h3>
-        </div>
-      </div>
-
-      <div class="item">
-        <img src="img_flower2.jpg" alt="Flower" width="460" height="325">
-        <div class="carousel-caption">
-          <h3>to undertand trends</h3>
-        </div>
-      </div>
-  
+<script>
+  $.get('http://localhost:5000/data/', function(response) 
+  $.get('http://localhost:5000/data/', function(response) {    
+    //alert(response.text);
+    var comment=response.text;
+    alert(comment);
+    document.getElementById('comments').innerHTML = comment;
+    e.preventDefault();
+    return false;
+  })
+</script>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+    <a class="navbar-brand" href="index.html"> <img src="icon.png" style="height: 30px"></a>     
     </div>
-    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li><a href="index.html"><span class="glyphicon glyphicon-home" ></span>Home</a></li>
+        <li><a href="aboutus.html"><span class="glyphicon glyphicon-info-sign"></span>About</a></li>
+        <li class="active"><a href="TheStuff.html"><span class="glyphicon glyphicon-signal"></span>Service</a></li>
+        <li><a href="contact.html"><span class="glyphicon glyphicon-envelope"></span>Contact</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Manage Account <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Notifications</a></li>
+            <li><a href="#">Mobile App</a></li>
+            <li><a href="#">Other</a></li>
+          </ul>
+        </li>
+        <li><a href="login.html"><span class="glyphicon glyphicon-off"></span> Log out</a></li>
+      </ul>
+    </div>
   </div>
-</div>
-	<section>
-  		<code>Our web app is cool right? Now use it bitch</code>
-	</section>
-	<section>
-  		<code>Our web app is cool right? Now use it bitch</code>
-	</section>
-	<section>
-  		<code>Our web app is cool right? Now use it bitch</code>
-	</section>
-	<section>
-  		<code>Our web app is cool right? Now use it bitch</code>
-	</section>
-	<section>
-  		<code>Our web app is cool right? Now use it bitch</code>
-	</section>
-	<section>
-  		<code>Our web app is cool right? Now use it bitch</code>
-	</section>
-	<section>
-  		<code>Our web app is cool right? Now use it bitch</code>
-	</section>
-	<section>
-  		<code>Our web app is cool right? Now use it bitch</code>
-	</section>
-	<section>
-  		<code>Our web app is cool right? Now use it bitch</code>
-	</section>
-	<section>
-  		<code>Our web app is cool right? Now use it bitch</code>
-	</section>
-	<section>
-  		<code>Our web app is cool right? Now use it bitch</code>
-	</section>
-	<section>
-  		<code>Our web app is cool right? Now use it bitch</code>
-	</section>
-<section id="footer" align="center"><p style="color: lightblue">Copyright &copy; CUHacking Cool Team</p>></section>
+</nav>
+  <div class="container" style="background-color: white;">
+    <div class="jumbotron" style="background: lightgreen;">
+    <h1 align="center">Service</h1>      
+    <p align="center">Displays data of your connected devices using Martello's API</p>
+  	</div>  
+    <textarea class="form-control" id="comments" style="position: center; height: 200px""></textarea><br>
+    <button class="button button2" style="margin-bottom: 50px; padding-right: 30px; padding-left: 30px;" onclick="analyse()">Analyse</button>
+<section id="footer" align="center"><p style="color: lightblue">Copyright &copy; CUHacking Digital FootPrint</p></section>
+  </div>
+
+<script> function analyse(){
+alert('Sorry, graphical analysis is yet to be done.');
+}</script>
 </body>
 </html>
